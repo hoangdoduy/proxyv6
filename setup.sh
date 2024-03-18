@@ -16,7 +16,8 @@ gen64() {
 install_3proxy() {
     echo "installing 3proxy"
     # https://github.com/hoangdoduy/proxyv6/raw/main/3proxy-3proxy-0.8.6.tar.gz
-    URL="https://github.com/z3APA3A/3proxy/archive/3proxy-0.8.6.tar.gz"
+    # https://github.com/z3APA3A/3proxy/archive/3proxy-0.8.6.tar.gz
+    URL="https://github.com/hoangdoduy/proxyv6/raw/main/3proxy-3proxy-0.8.6.tar.gz"
     wget -qO- $URL | bsdtar -xvf-
     cd 3proxy-3proxy-0.8.6
     make -f Makefile.Linux
@@ -39,6 +40,7 @@ nserver 8.8.4.4
 nserver 2001:4860:4860::8888
 nserver 2001:4860:4860::8844
 nscache 65536
+nscache6 65536
 timeouts 1 5 30 60 180 1800 15 60
 setgid 65535
 setuid 65535
@@ -57,7 +59,7 @@ EOF
 }
 
 gen_proxy_file_for_user() {
-    cat >proxy.txt <<EOF
+    cat <<EOF
 $(awk -F "/" '{print $3 ":" $4 ":" $1 ":" $2 }' ${WORKDATA})
 EOF
 }
@@ -113,7 +115,7 @@ EOF
 
 bash /etc/rc.local
 
-gen_proxy_file_for_user
+gen_proxy_file_for_user > /root/proxy.txt
 rm -rf /root/setup.sh
 rm -rf /root/3proxy-3proxy-0.8.6
 

@@ -21,9 +21,11 @@ install_3proxy() {
     make -f Makefile.Linux
     mkdir -p /usr/local/etc/3proxy/{bin,logs,stat}
     cp src/3proxy /usr/local/etc/3proxy/bin/
-    #cp ./scripts/rc.d/proxy.sh /etc/init.d/3proxy
-    #chmod +x /etc/init.d/3proxy
-    #chkconfig 3proxy on
+    cp ./scripts/rc.d/proxy.sh /etc/init.d/3proxy
+    chmod +x /etc/init.d/3proxy
+    chkconfig 3proxy on
+    touch /usr/local/etc/3proxy/3proxy.pid
+    chmod 777 /usr/local/etc/3proxy/3proxy.pid
     cd $WORKDIR
 }
 
@@ -40,6 +42,7 @@ timeouts 1 5 30 60 180 1800 15 60
 setgid 65535
 setuid 65535
 stacksize 6291456 
+pidfile /usr/local/etc/3proxy/3proxy.pid
 flush
 auth strong
 

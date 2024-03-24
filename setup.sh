@@ -28,6 +28,21 @@ install_3proxy() {
     chkconfig 3proxy on
     touch /usr/local/etc/3proxy/3proxy.pid
     chmod 777 /usr/local/etc/3proxy/3proxy.pid
+    
+    echo "* hard nofile 999999" >>  /etc/security/limits.conf
+    echo "* soft nofile 999999" >>  /etc/security/limits.conf
+    echo "net.ipv6.conf.eth0.proxy_ndp=1" >> /etc/sysctl.conf
+    echo "net.ipv6.conf.all.proxy_ndp=1" >> /etc/sysctl.conf
+    echo "net.ipv6.conf.default.forwarding=1" >> /etc/sysctl.conf
+    echo "net.ipv6.conf.all.forwarding=1" >> /etc/sysctl.conf
+    echo "net.ipv6.conf.eth0.accept_ra = 2" >> /etc/sysctl.conf
+    echo "net.ipv6.conf.all.accept_ra = 2" >> /etc/sysctl.conf
+    echo "net.ipv6.conf.default.accept_ra = 2" >> /etc/sysctl.conf
+    echo "net.ipv6.ip_nonlocal_bind = 1" >> /etc/sysctl.conf
+    sysctl -p
+    systemctl stop firewalld
+    systemctl disable firewalld
+    
     cd $WORKDIR
 }
 

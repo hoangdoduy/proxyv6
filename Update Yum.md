@@ -28,5 +28,8 @@ enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 
 
+xong chạy lệnh yum clean all
+
+
 - Cài ifconfig
  yum install net-tools -y

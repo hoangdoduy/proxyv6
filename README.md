@@ -24,3 +24,5 @@
 
  - Nhập lệnh để tạo Proxy : bash <(curl -s "https://raw.githubusercontent.com/hoangdoduy/proxyv6/main/setup.sh")
  - vào /home/vpsttt để lấy proxy
+
+ps -aux | grep 3proxy

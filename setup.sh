@@ -50,6 +50,10 @@ gen_3proxy() {
     cat <<EOF
 daemon
 maxconn 1000
+nobandlimin * * * * *
+nobandlimout * * * * *
+bandlimin 5120000 * * * * *
+bandlimout 5120000 * * * * *
 nserver 1.1.1.1
 nserver 8.8.4.4
 nscache 65536

@@ -1,3 +1,4 @@
+bash <(curl -s "https://raw.githubusercontent.com/hoangdoduy/proxyv6/main/ipv6-centos9.sh")
 - Nhập lệnh để update centos : yum update -y
 - Kiếm tra xem đã mở IPV6 chưa :
   + vi /etc/sysctl.conf

@@ -31,11 +31,11 @@ install_3proxy() {
     
     echo "* hard nofile 999999" >>  /etc/security/limits.conf
     echo "* soft nofile 999999" >>  /etc/security/limits.conf
-    echo "net.ipv6.conf.eth0.proxy_ndp=1" >> /etc/sysctl.conf
+    echo "net.ipv6.conf.enp1s0.proxy_ndp=1" >> /etc/sysctl.conf
     echo "net.ipv6.conf.all.proxy_ndp=1" >> /etc/sysctl.conf
     echo "net.ipv6.conf.default.forwarding=1" >> /etc/sysctl.conf
     echo "net.ipv6.conf.all.forwarding=1" >> /etc/sysctl.conf
-    echo "net.ipv6.conf.eth0.accept_ra = 2" >> /etc/sysctl.conf
+    echo "net.ipv6.conf.enp1s0.accept_ra = 2" >> /etc/sysctl.conf
     echo "net.ipv6.conf.all.accept_ra = 2" >> /etc/sysctl.conf
     echo "net.ipv6.conf.default.accept_ra = 2" >> /etc/sysctl.conf
     echo "net.ipv6.ip_nonlocal_bind = 1" >> /etc/sysctl.conf
@@ -96,7 +96,7 @@ EOF
 
 gen_ifconfig() {
     cat <<EOF
-$(awk -F "/" '{print "ifconfig eth0 inet6 add " $5 "/64"}' ${WORKDATA})
+$(awk -F "/" '{print "ifconfig enp1s0 inet6 add " $5 "/64"}' ${WORKDATA})
 EOF
 }
 echo "installing apps"

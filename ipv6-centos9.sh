@@ -136,6 +136,6 @@ bash /etc/rc.local
 
 gen_proxy_file_for_user > /root/proxy.txt
 rm -rf /root/setup.sh
-rm -rf /root/3proxy-3proxy-0.8.6
+rm -rf /root/3proxy-0.8.13
 
 echo "Starting Proxy"

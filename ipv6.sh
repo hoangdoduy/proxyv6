@@ -31,6 +31,8 @@ install_3proxy() {
     
     echo "* hard nofile 999999" >>  /etc/security/limits.conf
     echo "* soft nofile 999999" >>  /etc/security/limits.conf
+    echo "net.ipv6.conf.default.disable_ipv6=0" >> /etc/sysctl.conf
+    echo "net.ipv6.conf.all.disable_ipv6=0" >> /etc/sysctl.conf
     echo "net.ipv6.conf.eth0.proxy_ndp=1" >> /etc/sysctl.conf
     echo "net.ipv6.conf.all.proxy_ndp=1" >> /etc/sysctl.conf
     echo "net.ipv6.conf.default.forwarding=1" >> /etc/sysctl.conf

@@ -115,10 +115,11 @@ IP4=$(curl -4 -s icanhazip.com)
 IP6=$(curl -6 -s icanhazip.com | cut -f1-4 -d':')
 
 echo "Internal ip = ${IP4}. Exteranl sub for ip6 = ${IP6}"
+echo "How Port proxy? Example 22000"
+read FIRST_PORT
 echo "How many proxy do you want to create? Example 500"
 read COUNT
 
-FIRST_PORT=22000
 LAST_PORT=$(($FIRST_PORT + $COUNT))
 
 gen_data >$WORKDIR/data.txt
